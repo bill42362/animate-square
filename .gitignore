@@ -1,0 +1,5 @@
+.DS_Store
+*.swp
+*backup*
+node_modules/
+dist/
