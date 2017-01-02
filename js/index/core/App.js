@@ -1,10 +1,11 @@
 // App.js
 'use strict'
 import { createStore } from 'redux';
+import { connect, Provider } from 'react-redux';
 import AnimateBoxes from './AnimateBoxes.js';
+import BoxCanvas from '../../common/react/BoxCanvas.react.js';
 var ReactDOM = require('react-dom');
 var Core = require('../../common/core/Core.js');
-var Wrapper = require('../react/App.react.js');
 
 var onReadyStateChange = function onReadyStateChange(e) {
     if(document.readyState == 'complete') {
@@ -12,8 +13,13 @@ var onReadyStateChange = function onReadyStateChange(e) {
         for(let i = 0; i < 10; ++i) {
             animateBoxesStore.dispatch(AnimateBoxes.addRandomBox());
         }
-        console.table(animateBoxesStore.getState());
-        ReactDOM.render(<Wrapper />, document.getElementById('app-root'));
+        let ConnectedBoxCanvas = connect(state => { return {boxes: state}; })(BoxCanvas);
+        ReactDOM.render(
+            <Provider store={animateBoxesStore} >
+                <ConnectedBoxCanvas canvasProps={{style: {backgroundColor: 'black'}}} />
+            </Provider>,
+            document.getElementById('app-root')
+        );
     }   
 };
 document.addEventListener('readystatechange', onReadyStateChange);
