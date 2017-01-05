@@ -1,7 +1,7 @@
-// BoxCanvas.react.js
+// SquareCanvas.react.js
 'use strict'
 import React from 'react';
-class BoxCanvas extends React.Component {
+class SquareCanvas extends React.Component {
     constructor(props) {
         super(props);
         this.antialiasingFactor = 2;
@@ -11,20 +11,20 @@ class BoxCanvas extends React.Component {
                 m21: Math.sin(arc), m22: Math.cos(arc),
             };
         });
-        this.boxStack = [];
+        this.squareStack = [];
         this.context = undefined;
         this.clearCanvas = this.clearCanvas.bind(this);
         this.drawProps = this.drawProps.bind(this);
-        this.drawBoxStack = this.drawBoxStack.bind(this);
+        this.drawSquareStack = this.drawSquareStack.bind(this);
     }
     getStyleFromRGB({red = 0, green = 0, blue = 0}) {
         return `rgb(${Math.floor(red)},${Math.floor(green)},${Math.floor(blue)})`;
     }
-    pushBoxStack(points = [], style = '#888', alpha = 1) {
-        this.boxStack.push({points: points, fillStyle: style, globalAlpha: alpha });
+    pushSquareStack(points = [], style = '#888', alpha = 1) {
+        this.squareStack.push({points: points, fillStyle: style, globalAlpha: alpha });
     }
-    drawBoxStack(ctx) {
-        let stack = this.boxStack.sort((a, b) => {
+    drawSquareStack(ctx) {
+        let stack = this.squareStack.sort((a, b) => {
             if(a.fillStyle > b.fillStyle) return 1; 
             if(a.fillStyle < b.fillStyle) return -1; 
             if(a.globalAlpha > b.globalAlpha) return 1; 
@@ -33,31 +33,31 @@ class BoxCanvas extends React.Component {
         let tempFillStyle = ctx.fillStyle;
         let tempGlobalAlpha = ctx.globalAlpha;
         ctx.beginPath();
-        stack.forEach(box => {
+        stack.forEach(square => {
             let current = {
                 fillStyle: ctx.fillStyle,
                 globalAlpha: ctx.globalAlpha,
             };
-            if(current.fillStyle !== box.fillStyle || current.globalAlpha !== box.globalAlpha) {
+            if(current.fillStyle !== square.fillStyle || current.globalAlpha !== square.globalAlpha) {
                 ctx.fill();
-                if(current.fillStyle !== box.fillStyle) ctx.fillStyle = box.fillStyle;
-                if(current.globalAlpha !== box.globalAlpha) ctx.globalAlpha = box.globalAlpha;
+                if(current.fillStyle !== square.fillStyle) ctx.fillStyle = square.fillStyle;
+                if(current.globalAlpha !== square.globalAlpha) ctx.globalAlpha = square.globalAlpha;
                 ctx.beginPath();
             }
-            ctx.moveTo(box.points[box.points.length - 1].x, box.points[box.points.length - 1].y);
-            box.points.forEach(point => { ctx.lineTo(point.x, point.y); });
+            ctx.moveTo(square.points[square.points.length - 1].x, square.points[square.points.length - 1].y);
+            square.points.forEach(point => { ctx.lineTo(point.x, point.y); });
         });
         ctx.fill();
         ctx.fillStyle = tempFillStyle;
         ctx.globalAlpha = tempGlobalAlpha;
-        this.boxStack = [];
+        this.squareStack = [];
     }
     drawProps(props, context) {
         this.clearCanvas(context);
         const unit = Math.max(this.canvas.width, this.canvas.height);
-        let rectangles = props.boxes.map(box => {
-            const center = {x: unit*box.center.x, y: unit*box.center.y};
-            const aVector = {x: unit*box.aVector.x, y: unit*box.aVector.y};
+        let rectangles = props.squares.map(square => {
+            const center = {x: unit*square.center.x, y: unit*square.center.y};
+            const aVector = {x: unit*square.aVector.x, y: unit*square.aVector.y};
             let a = {x: center.x + aVector.x, y: center.y + aVector.y};
             return {
                 points: [a, ...this.rectMatrixes.map(matrix => {
@@ -66,13 +66,13 @@ class BoxCanvas extends React.Component {
                         y: center.y + aVector.x*matrix.m21 + aVector.y*matrix.m22,
                     };
                 })],
-                color: box.color,
+                color: square.color,
             };
         });
-        rectangles.forEach(box => {
-            this.pushBoxStack(box.points, this.getStyleFromRGB(box.color), box.color.alpha);
+        rectangles.forEach(square => {
+            this.pushSquareStack(square.points, this.getStyleFromRGB(square.color), square.color.alpha);
         });
-        this.drawBoxStack(context);
+        this.drawSquareStack(context);
     }
     clearCanvas(context) {
         let canvas = this.canvas;
@@ -95,4 +95,4 @@ class BoxCanvas extends React.Component {
     }
     render() { return <canvas ref='canvas' {...this.props.canvasProps} ></canvas>; }
 }
-module.exports = BoxCanvas;
+module.exports = SquareCanvas;
