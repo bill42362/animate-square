@@ -1,7 +1,7 @@
-// SquareCanvas.react.js
+// Component.react.js
 'use strict'
 import React from 'react';
-class SquareCanvas extends React.Component {
+export default class Component extends React.Component {
     constructor(props) {
         super(props);
         this.antialiasingFactor = 2;
@@ -95,4 +95,3 @@ class SquareCanvas extends React.Component {
     }
     render() { return <canvas ref='canvas' {...this.props.canvasProps} ></canvas>; }
 }
-module.exports = SquareCanvas;

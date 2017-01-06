@@ -2,26 +2,23 @@
 'use strict'
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
-import AnimateSquares from './AnimateSquares.js';
-import SquareCanvas from '../../common/react/SquareCanvas.react.js';
-var ReactDOM = require('react-dom');
-var Core = require('../../common/core/Core.js');
-
+import { Actions, Reducer, Component } from '../../../src/index.js';
+import ReactDOM from 'react-dom';
 
 var onReadyStateChange = function onReadyStateChange(e) {
     if(document.readyState == 'complete') {
-        let animateSquaresStore = createStore(AnimateSquares.reducer);
+        let animateSquaresStore = createStore(Reducer);
         for(let i = 0; i < 30; ++i) {
-            animateSquaresStore.dispatch(AnimateSquares.addRandomSquare());
+            animateSquaresStore.dispatch(Actions.addRandomSquare());
         }
-        let ConnectedSquareCanvas = connect(state => { return {squares: state}; })(SquareCanvas);
+        let ConnectedComponent = connect(state => { return {squares: state}; })(Component);
         let goNextStep = () => {
-            animateSquaresStore.dispatch(AnimateSquares.goNextStep());
+            animateSquaresStore.dispatch(Actions.goNextStep());
             window.requestAnimationFrame(goNextStep);
         }
         ReactDOM.render(
             <Provider store={animateSquaresStore} >
-                <ConnectedSquareCanvas canvasProps={{style: {backgroundColor: 'rgb(220, 220, 220)'}}} />
+                <ConnectedComponent canvasProps={{style: {backgroundColor: 'rgb(220, 220, 220)'}}} />
             </Provider>,
             document.getElementById('app-root'),
             () => { window.requestAnimationFrame(goNextStep); }

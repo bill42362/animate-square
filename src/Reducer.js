@@ -1,17 +1,6 @@
-// AnimateSquares.js
-let lastTimestamp = Date.now();
-const goNextStep = () => {
-    let duration = Date.now() - lastTimestamp;
-    lastTimestamp += duration;
-    return {
-        type: 'GO_NEXT_STEP',
-        duration: duration
-    };
-};
-const addRandomSquare = () => { return { type: 'ADD_RANDOM_SQUARE' }; };
-const addSquare = (square) => { return { type: 'ADD_SQUARE', square: square }; };
-
-const animateSquaresReducer = (state = [], action) => {
+// Reducer.js
+'use strict'
+const Reducer = (state = [], action) => {
     switch(action.type) {
         case 'GO_NEXT_STEP':
             return state.map(square => {
@@ -39,9 +28,6 @@ const animateSquaresReducer = (state = [], action) => {
         default:
             return state;
     }
-}
-
-export default {
-    goNextStep, addSquare, addRandomSquare,
-    reducer: animateSquaresReducer
 };
+export { Reducer };
+export default Reducer;
