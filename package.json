@@ -2,6 +2,10 @@
   "name": "animate-square",
   "version": "0.1.0",
   "description": "Animator of squares with canvas.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bill42362/animate-square.git"
+  },
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
