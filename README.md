@@ -8,7 +8,7 @@ npm install --save animate-square
 ### Usage
 ```js
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { Actions, Reducer, Component } from 'animate-square';
 import ReactDOM from 'react-dom';
 
