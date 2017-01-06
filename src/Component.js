@@ -76,7 +76,7 @@ export default class Component extends React.Component {
     }
     clearCanvas(context) {
         let canvas = this.canvas;
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.clearRect(-1, -1, canvas.width + 1, canvas.height + 1);
     }
     componentDidMount() {
         let antialiasingFactor = this.antialiasingFactor;
