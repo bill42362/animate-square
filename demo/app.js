@@ -14,6 +14,7 @@ App.prototype.run = function() {
         server.use(route.path, Express.static(__dirname + route.serverPath));
     });
     server.listen(3000);
+    console.log('Listening on 3000 port ...');
 };
 module.exports = App;
 

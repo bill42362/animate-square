@@ -2,7 +2,8 @@
 'use strict'
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
-import { Actions, Reducer, Component } from '../../../src/index.js';
+import { Actions, Reducer, Component } from 'animate-square';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 var onReadyStateChange = function onReadyStateChange(e) {
