@@ -54,4 +54,4 @@ cd node_module/animate-square/demo
 npm install
 npm start
 ```
-Open demo page on `http://localhost:3000`
+Open demo page on *http://localhost:3000*
