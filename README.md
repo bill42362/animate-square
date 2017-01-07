@@ -21,7 +21,9 @@ for(let i = 0; i < 30; ++i) {
 }
 
 // Make container component.
-const ConnectedComponent = connect(state => { return {squares: state}; })(Component);
+const ConnectedComponent = connect(state => {
+    return {squares: state};
+})(Component);
 
 // Animation.
 const onReactDOMRendered = function() {
@@ -35,9 +37,21 @@ const onReactDOMRendered = function() {
 
 ReactDOM.render(
     <Provider store={animateSquaresStore} >
-        <ConnectedComponent canvasProps={{style: {backgroundColor: 'rgb(220, 220, 220)'}}} />
+        <ConnectedComponent
+            canvasProps={{
+                style: {backgroundColor: 'rgb(220, 220, 220)'}
+            }} 
+        />
     </Provider>,
     document.getElementById('app-root'),
     onReactDOMRendered
 );
 ```
+
+### Demo
+```bash
+cd node_module/animate-square/demo
+npm install
+npm start
+```
+Open demo page on `http://localhost:3000`
