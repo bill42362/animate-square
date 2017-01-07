@@ -1,5 +1,5 @@
 # animate-square
-Animator of squares with canvas.",
+Animator of squares with canvas.
 
 ### Installation
 ```bash
