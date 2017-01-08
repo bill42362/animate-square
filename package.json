@@ -8,7 +8,8 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "keywords": [
     "square",
@@ -24,8 +25,12 @@
       "babelify"
     ]
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "deep-freeze": "0.0.1",
+    "enzyme": "^2.7.0",
+    "jest-cli": "^18.1.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2"
   }
 }
