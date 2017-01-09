@@ -13,3 +13,4 @@ deploy:
         secure: bb03c315-de88-49a4-b988-396278221f41
         on:
             tags: true
+            all_branches: true
