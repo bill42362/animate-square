@@ -8,4 +8,4 @@ node_js:
     - stable
 
 after_failure:
-    - cat /home/travis/builds/evantahler/actionHero/npm-debug.log
+    - echo $TRAVIS_TEST_RESULT
