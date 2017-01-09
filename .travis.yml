@@ -1,16 +1,13 @@
 language: node_js
-
-# test on two node.js versions: 0.6 and 0.8
 node_js:
-    - 5
-    - 6
-    - stable
-
+- 5
+- 6
+- stable
 deploy:
-    provider: npm
-    email: bill42362@gmail.com
-    api_key:
-        secure: bb03c315-de88-49a4-b988-396278221f41
-        on:
-            tags: true
-            all_branches: true
+  provider: npm
+  email: bill42362@gmail.com
+  api_key:
+    secure: NM1Vi7KfLNPVpWXbuPRhExnLrhw3UD3vuha7bti29tFZotbrrRLDj/UcUEeK5Ls+/vJodD7YorDVOH8ZQU0vGErR0gT7DxhXVrium46Wxpzgqbq54fuxXmPddWwLl5UTufWhOVihDahPnIpvdNfoTYMo8KrTJv7IWsXsDaLzaymayFy0/LD1U9lzBUUG7NKuSzk1C14vQQRJ8Hec9PjJQ7wQbQOkHIf7XbfxnCNjRjW4bMc6AFlCykFzJAOE0+ZQAXPbHa8HPVevyWcMpOxBLqxD6Q5wE1SoJvL9xje3hPHRtQmdllUwZIKMpG45TtBhuqRMFm2tSWjuKy23evQyVGs4keTiApr+poPE8Gx9/mm2e8Y8LVYaldRfK9pMSxcMUJEX2AV/7GfRKVjJ9EHzE/8z4/EbrwqlvZCLgCllZJaqv4lJn7xLKz96ma3p4H8PxcF2r3xRxl2BIwdl8KaSH7vEnv39u+U6Mtf6sF9k4JHVY1NzKuGIBStI6m6Oo31J+e/HSxkRTLIDsnBpWk2/2mOm1Ek4xB8cnt97KZwQFIN6q9kBPljc/z03Vp5MjutDh176IB3n/hcZS4iCGxO9hSE86HCU765sFDtIF6tISapOBmoGBkqiQGo665RDdFsbRdApZmXNlRmdeM0+1Enbt/wsP0QKy+QWTUq/W+IdIok=
+  on:
+    tags: true
+    repo: bill42362/animate-square
