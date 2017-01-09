@@ -5,3 +5,10 @@ node_js:
     - 5
     - 6
     - stable
+
+deploy:
+    provider: npm
+    api_key:
+        secure: bb03c315-de88-49a4-b988-396278221f41
+        on:
+            tags: true
