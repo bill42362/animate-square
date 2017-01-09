@@ -6,6 +6,3 @@ node_js:
     - 5
     - 6
     - stable
-
-after_failure:
-    - echo $TRAVIS_TEST_RESULT
