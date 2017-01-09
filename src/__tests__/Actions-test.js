@@ -33,7 +33,6 @@ describe('Actions.addSquare', () => {
         for(let i = 0; i < 1000000; ++i) { let j = i*2/3; }
         const nextActionTimestamp = Date.now();
         const nextAction = Actions.goNextStep();
-        console.log(nextActionTimestamp - actionTimestamp);
         expect(action.type).toEqual('GO_NEXT_STEP');
         expect(nextAction.duration).toEqual(nextActionTimestamp - actionTimestamp);
     });
