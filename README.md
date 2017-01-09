@@ -1,6 +1,8 @@
 # animate-square
 Animator of squares with canvas.
 
+[![Build Status](https://travis-ci.org/bill42362/animate-square.svg?branch=master)](https://travis-ci.org/bill42362/animate-square)
+
 ### Installation
 ```bash
 npm install --save animate-square
